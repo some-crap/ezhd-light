@@ -8,3 +8,7 @@ CREATE TABLE 'BD_NAME'.'table_homework' ( 'id' INT NOT NULL AUTO_INCREMENT , 'ti
 
 
 Всё это работает на хостинге с PHP
+
+Для администрирования используется https://play.google.com/store/apps/details?id=com.churkinapps.lightschool&hl=ru 
+Настройки -> Домашние задания -> Администрировать сервер заданий
+Часть файлов и api взяты с https://churkinapps.wordpress.com/
