@@ -2,14 +2,27 @@
 setlocale(LC_ALL, 'ru_RU');
 include 'config.php';
 
-$mysqli = new mysqli(HOST, USERNAME, PASS, DBNAME);
+$link= new mysqli(HOST, USERNAME, PASS, DBNAME);
 
-$link = mysqli_connect('DB_HOST','DB_USER', 'DB_UESR_PASS','DB_NAME');
 mysqli_set_charset($link, "utf8");
-
-$res=mysqli_query($link,"SELECT * FROM table_homework");
+$tim=date("H",time());
+if($tim>16)
+{
+    //искать задания больше завтрашнего дня 00.00
+    $temp =  mktime(0,0,0)+24*60*60;
+}
+else
+{
+    //от сегодня с 00.00
+    $temp = mktime(0,0,0);
+}
+$res=mysqli_query($link,"SELECT * FROM table_homework WHERE `timestamp`> $temp");
+//echo "SELECT * FROM table_homework WHERE `timestamp`> $temp";
 echo ' 
 <style>
+a.content {
+    color: white;
+}
 .table_dark {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
@@ -41,7 +54,7 @@ echo '
 }
 </style>';
 echo "<center>";
-echo '<body style="background-color: #252F48; color: #CAD4D6;">';
+echo '<body style="background-color: #252F48; color: #CAD4D6 ;">';
 echo '<table class="table_dark">
    <caption>Домашнее задание</caption>
    <tr>
@@ -63,7 +76,10 @@ date_default_timezone_set("UTC"); // Устанавливаем часовой �
   $offset = 3; // Допустим, у пользователя смещение относительно Гринвича составляет +3 часа
   $time += 3 * 3600; // Добавляем 3 часа к времени по Гринвичу
   echo date("d-m-Y H:i:s", $time); // Выводим время пользователя, согласно его часовому поясу
-
+  echo'<br>
+  <a href="/add" class="content">Добавить ДЗ</a><br>
+  <a href="/delete" class="content">Удалить ДЗ</a><br>
+  <a href="/edit" class="content">Редактировать ДЗ</a>';
   echo'</body>';
   
   
