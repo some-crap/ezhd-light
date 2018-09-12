@@ -4,7 +4,7 @@ include 'config.php';
 
 $link= new mysqli(HOST, USERNAME, PASS, DBNAME);
 
-mysqli_set_charset($link, "utf8");
+mysqli_set_charset($link, "utf8_general_ci");
 $tim=date("H",time());
 if($tim>16)
 {
