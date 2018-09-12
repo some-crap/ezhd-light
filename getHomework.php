@@ -34,3 +34,4 @@ $json_data = json_encode($hometasks_array, JSON_UNESCAPED_UNICODE);
 echo $json_data;
 $mysqli->close();	
 ?>
+
