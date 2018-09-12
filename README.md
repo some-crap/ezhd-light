@@ -8,7 +8,3 @@ CREATE TABLE `'database_name(своё)'`.`'table_homework'` ( `'id'` INT NOT NUL
 
 Всё это работает на хостинге с PHP
 
-Интегрировано с https://play.google.com/store/apps/details?id=com.churkinapps.lightschool&hl=ru 
-Настройки -> Домашние задания
-
-Часть файлов и api взяты с https://churkinapps.wordpress.com/
