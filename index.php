@@ -5,18 +5,8 @@ include 'config.php';
 $link= new mysqli(HOST, USERNAME, PASS, DBNAME);
 
 mysqli_set_charset($link, "utf8_general_ci");
-$tim=date("H",time());
-if($tim>16)
-{
-    //искать задания больше завтрашнего дня 00.00
-    $temp =  mktime(0,0,0)+24*60*60;
-}
-else
-{
-    //от сегодня с 00.00
-    $temp = mktime(0,0,0);
-}
-$res=mysqli_query($link,"SELECT * FROM table_homework WHERE `timestamp`> $temp");
+
+$res=mysqli_query($link,"SELECT * FROM table_homework");
 //echo "SELECT * FROM table_homework WHERE `timestamp`> $temp";
 echo ' 
 <style>
