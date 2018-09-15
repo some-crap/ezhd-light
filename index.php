@@ -86,6 +86,8 @@ date_default_timezone_set("UTC"); // Устанавливаем часовой �
 	
 
 if ( isset ($_SESSION['logged_user']) ) : ?>
+<br>
+<br>
 <table>
     <tr><td>Добавить</td><td>Удалить</td><td>Редактировать</td></tr>
     <tr><td> <form id="slick-login" action="add.php" method="post"><br>
