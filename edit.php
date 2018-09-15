@@ -1,7 +1,9 @@
 <?php
 include 'config.php';
 include 'response.php';
-if(isset($_POST['id']) && isset($_POST['subject']) && isset($_POST['hometask'])) {
+
+if(isset($_POST['admin_token']) && isset($_POST['id']) && isset($_POST['subject']) && isset($_POST['hometask'])) {
+
 	$id = trim($_POST['id']);
 	$subject = trim($_POST['subject']);
 	$hometask = trim($_POST['hometask']);
@@ -10,7 +12,13 @@ if(isset($_POST['id']) && isset($_POST['subject']) && isset($_POST['hometask']))
 		onError(1);
 		exit();
 	}
+	else if(!(strcmp($_POST['admin_token'], ADMIN_TOKEN) == 0)) {
+		onError(2);
+		exit();
+	}
+
 	$mysqli = new mysqli(HOST, USERNAME, PASS, DBNAME);
+
 	$stmt = $mysqli->prepare("UPDATE table_homework SET subject = ?, hometask = ? WHERE id=?");
 	if($stmt === false) {
 		die ("Mysql Error: " . $mysqli->error);
