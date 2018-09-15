@@ -59,9 +59,9 @@ a.content {
 .spoiler-content{
 display:none;
 padding:15px 20px;
-border:1px solid #ccc;
+border:3px solid #ccc;
 margin-top:5px;
-background: #252F48;
+background: #252F51;
 
 }
 .spoiler-block{
@@ -103,7 +103,8 @@ date_default_timezone_set("UTC"); // Устанавливаем часовой �
   $time = time(); // Вот это значение отправляем в базу
   $offset = 3; // Допустим, у пользователя смещение относительно Гринвича составляет +3 часа
   $time += 3 * 3600; // Добавляем 3 часа к времени по Гринвичу
-  echo date("d-m-Y H:i:s", $time); // Выводим время пользователя, согласно его часовому поясу	
+  echo date("d-m-Y H:i:s", $time); // Выводим время пользователя, согласно его часовому поясу
+	
 	
 	
 	
@@ -113,29 +114,33 @@ if ( isset ($_SESSION['logged_user']) ) : ?>
 <br>
 	<div class="spoiler-block">
 		<a href="#" class="spoiler-title">управление</a>
-		<div class="spoiler-content"> 
-<table>
+		<div class="spoiler-content">
+		    <center> 
+<table width=90%>
     <font colour="black">
     <tr><td>Добавить</td><td>Удалить</td><td>Редактировать</td></tr>
     <tr><td> <form id="slick-login" action="add.php" method="post"><br>
+    <input type="hidden" name="admin_token" value="yourtoken"><br>
     <input type="text" name="subject" class="placeholder" placeholder="Предмет"><br>
-	<textarea input type="text" name="hometask" class="placeholder" placeholder="Задание"></textarea><br>
+	<textarea input type="text" name="hometask" class="placeholder" placeholder="Задание"></textarea><br>               
 	<input type="text" name="timestamp" class="placeholder" placeholder="ГГГГ-ММ-ДД"><br>
 	<input type="submit"  id="slick-login" value="Добавить задание" />
 	</form>
 </form> </td><td> 
     <form action="delete.php" id="slick-delete" method="post">
-	<input type="text" name="num" class="placeholder" placeholder="id "задания><br>
+    <input type="hidden" name="admin_token" value="yourtoken"><br>
+	<input type="text" name="id" class="placeholder" placeholder="id "задания><br>               
 	<input type="submit"  id="slick-delete" value="Удалить задание" />
 	</form>
 </td><td>
     <form id="slick-login" action="edit.php" method="post" enctype="multipart/form-data"><br>
+    <input type="hidden" name="admin_token" value="yourtoken"><br>
     <input type="text" name="id" class="placeholder" placeholder="id"><br>
 	<input type="text" name="subject" class="placeholder" placeholder="Предмет"><br>
-	<textarea input type="text" name="hometask"  class="placeholder" placeholder="Задание"></textarea><br />
+	<textarea input type="text" name="hometask"  class="placeholder" placeholder="Задание"></textarea><br />               
 	<input type="submit" value="Редактировать" /> </td></tr>
 	</font>
-</table>
+</table></center>
 </div> 
 	</div>
 	<a href="logout.php" class="content">Выйти</a>
