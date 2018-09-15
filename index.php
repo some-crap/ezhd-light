@@ -161,4 +161,9 @@ return false;
 });
 
 </script>
+<br>
+<br>Онлайн радио (для тех, кому надоел свой плейлист) <br>
+<audio controls>
+    <source src="http://ic7.101.ru:8000/a99">
+    </audio>
 </body>
