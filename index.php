@@ -106,7 +106,7 @@ if ( isset ($_SESSION['logged_user']) ) : ?>
     <input type="text" name="id" class="placeholder" placeholder="id"><br>
 	<input type="text" name="subject" class="placeholder" placeholder="Предмет"><br>
 	<textarea input type="text" name="hometask"  class="placeholder" placeholder="Задание"></textarea><br />
-	<input type="submit" value="Отправить форму" /> </td></tr>
+	<input type="submit" value="Редактировать" /> </td></tr>
 </table>
 	<a href="logout.php" class="content">Выйти</a>
 
