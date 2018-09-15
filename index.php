@@ -22,6 +22,7 @@ else
 $res=mysqli_query($link,"SELECT * FROM table_homework WHERE `timestamp`> $temp");
 //echo "SELECT * FROM table_homework WHERE `timestamp`> $temp";
 echo ' 
+<head>
 <style>
 a.content {
     color: white;
@@ -55,7 +56,31 @@ a.content {
 .table_dark tr:hover td {
   text-decoration: underline;
 }
-</style>';
+.spoiler-content{
+display:none;
+padding:15px 20px;
+border:1px solid #ccc;
+margin-top:5px;
+background: #252F48;
+
+}
+.spoiler-block{
+margin-top:10px; 
+}
+.spoiler-title {
+border:1px solid #B9B9B9;
+background: #ccc;
+background:linear-gradient(#CACACA, #E8E8E8);
+padding:10px;
+text-decoration:none;
+color:#000;
+display:block;
+}
+
+</style> 
+<script src="jquery-latest.js" type="text/javascript"></script>
+</head>
+<body>';
 echo "<center>";
 echo '<body style="background-color: #252F48; color: #CAD4D6 ;">';
 echo '<table class="table_dark">
@@ -88,7 +113,11 @@ date_default_timezone_set("UTC"); // Устанавливаем часовой �
 if ( isset ($_SESSION['logged_user']) ) : ?>
 <br>
 <br>
+	<div class="spoiler-block">
+		<a href="#" class="spoiler-title">управление</a>
+		<div class="spoiler-content"> 
 <table>
+    <font colour="black">
     <tr><td>Добавить</td><td>Удалить</td><td>Редактировать</td></tr>
     <tr><td> <form id="slick-login" action="add.php" method="post"><br>
     <input type="text" name="subject" class="placeholder" placeholder="Предмет"><br>
@@ -107,7 +136,10 @@ if ( isset ($_SESSION['logged_user']) ) : ?>
 	<input type="text" name="subject" class="placeholder" placeholder="Предмет"><br>
 	<textarea input type="text" name="hometask"  class="placeholder" placeholder="Задание"></textarea><br />
 	<input type="submit" value="Редактировать" /> </td></tr>
+	</font>
 </table>
+</div> 
+	</div>
 	<a href="logout.php" class="content">Выйти</a>
 
 <?php else : ?>
@@ -116,3 +148,14 @@ if ( isset ($_SESSION['logged_user']) ) : ?>
 <a href="/signup.php" class="content"></a>
 <?php endif; ?>
 
+
+<script type="text/javascript"> 
+$(document).ready(function(){ 
+$('.spoiler-title').click(function(){ 
+$(this).parent().children('div.spoiler-content').toggle('fast');
+return false;
+});
+});
+
+</script>
+</body>
