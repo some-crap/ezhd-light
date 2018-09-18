@@ -1,13 +1,13 @@
 <?php
 include 'config.php';
 include 'print_response.php';
-
 if(isset($_GET['admin_token']) && isset($_GET['timestamp']) && isset($_GET['subject']) && isset($_GET['hometask'])) {
 	$mysqli = new mysqli(HOST, USERNAME, PASS, DBNAME);
 	
-	$timestamp = trim($_GET['timestamp']);
+	$date = trim($_GET['timestamp']);
 	$subject = trim($_GET['subject']);
 	$hometask = trim($_GET['hometask']);
+	$timestamp = strtotime($date)+10800;
 	
 	if(empty($timestamp) || empty($subject) || empty($hometask)) {
 		onError(1);

@@ -1,9 +1,9 @@
 <?php
-const HOST     =  "localhost";
-const USERNAME =  "user";
-const PASS     =  "pass";
-const DBNAME   =  "dbname";
+define('HOST','localhost');
+define('USERNAME','');
+define('PASS','');
+define('DBNAME','');
 
-//Secure key which give access to adding / editing / deleting homework
-const ADMIN_TOKEN =  "changeme";
+//ключ для бота
+const ADMIN_TOKEN =  "";
 ?>

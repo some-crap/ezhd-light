@@ -1,7 +1,9 @@
 <?php
 include 'config.php';
 include 'print_response.php';
+
 if(isset($_POST['admin_token']) && isset($_POST['timestamp']) && isset($_POST['subject']) && isset($_POST['hometask'])) {
+
 	$mysqli = new mysqli(HOST, USERNAME, PASS, DBNAME);
 	
 	$timestamp = trim($_POST['timestamp']);

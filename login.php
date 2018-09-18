@@ -1,50 +1,36 @@
-<?php 
-	require 'db.php';
+<?
+// Страница авторизации
+session_start();
 
-	$data = $_POST;
-	if ( isset($data['do_login']) )
-	{
-		$user = R::findOne('users', 'login = ?', array($data['login']));
-		if ( $user )
-		{
-			//логин существует
-			if ( password_verify($data['password'], $user->password) )
-			{
-				//если пароль совпадает, то нужно авторизовать пользователя
-				$_SESSION['logged_user'] = $user;
-				header("HTTP/1.1 301 Moved Permanently");
-                header('Refresh: 1; url=../');
-				echo '<div style="color:dreen;">Вы авторизованы!<br/> Можете перейти на <a href="/">главную</a> страницу.</div><hr>';
-				
-				
-				
-			}else
-			{
-				$errors[] = 'Неверно введен пароль!';
-			}
+// Соединямся с БД
+include'config.php';
+$link=mysqli_connect(HOST, USERNAME, PASS, DBNAME);
 
-		}else
-		{
-			$errors[] = 'Пользователь с таким логином не найден!';
-		}
-		
-		if ( ! empty($errors) )
-		{
-			//выводим ошибки авторизации
-			echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
-		}
+if(isset($_POST['submit']))
+{
+    // Вытаскиваем из БД запись, у которой логин равняется введенному
+    $query = mysqli_query($link,"SELECT user_id, user_password FROM users WHERE user_login='".mysqli_real_escape_string($link,$_POST['login'])."' LIMIT 1");
+    $data = mysqli_fetch_assoc($query);
 
-	}
+    // Сравниваем пароли
+    if($data['user_password'] === md5(md5($_POST['password'])))
+    {
 
+        $_SESSION['name'] = $_POST['login'];
+        // Переадресовываем браузер на страницу проверки нашего скрипта
+        header("Location: check.php");
+    }
+    else
+    {
+        print "Вы ввели неправильный логин/пароль";
+    }
+}
 ?>
+<form method="POST">
+Логин <input name="login" type="text" required>
+
+Пароль <input name="password" type="password" required>
 
 
-<form action="login.php" method="POST">
-	<strong>Логин</strong>
-	<input type="text" name="login" value="<?php echo @$data['login']; ?>"><br/>
-
-	<strong>Пароль</strong>
-	<input type="password" name="password" value="<?php echo @$data['password']; ?>"><br/>
-
-	<button type="submit" name="do_login">Войти</button>
+<input name="submit" type="submit" value="Войти">
 </form>

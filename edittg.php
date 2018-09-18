@@ -1,18 +1,18 @@
 <?php
 include 'config.php';
-include 'response.php';
+include 'print_response.php';
 
-if(isset($_POST['admin_token']) && isset($_POST['id']) && isset($_POST['subject']) && isset($_POST['hometask'])) {
+if(isset($_GET['admin_token']) && isset($_GET['id']) && isset($_GET['subject']) && isset($_GET['hometask'])) {
 
-	$id = trim($_POST['id']);
-	$subject = trim($_POST['subject']);
-	$hometask = trim($_POST['hometask']);
+	$id = trim($_GET['id']);
+	$subject = trim($_GET['subject']);
+	$hometask = trim($_GET['hometask']);
 	
 	if(empty($id) || empty($subject) || empty($hometask)) {
 		onError(1);
 		exit();
 	}
-	else if(!(strcmp($_POST['admin_token'], ADMIN_TOKEN) == 0)) {
+	else if(!(strcmp($_GET['admin_token'], ADMIN_TOKEN) == 0)) {
 		onError(2);
 		exit();
 	}
