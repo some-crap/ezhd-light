@@ -1,22 +1,10 @@
-В файле config.php подставить свои значения
-Для создания таблицы в БД выполнить запрос: 
+В файле config.php прописать свои значения.
 
-CREATE TABLE `'database_name(своё)'`.`'table_homework'` ( `'id'` INT NOT NULL AUTO_INCREMENT , `'timestamp'` INT NOT NULL , `'subject'` TEXT NOT NULL , `'hometask'` TEXT NOT NULL , PRIMARY KEY (`'id'`)) ENGINE = InnoDB;
+Залить дампы таблиц БД на хостинг.
+table_homework.sql кодировка utf8_unicode_ci
+users.sql кодировка windows-1251
 
-В запросе необходимо подставить имя своей БД
-
-В файле db.php просто подставить имя своей БД, пользователя и пароль.
-
-После перейти на страницу твойсайт/signup.php и произвести регистрацию.
-
-После регистрации удалить файл signup.php.
-
-В фале index.php в строках 123, 131 и 137 заменить yourtoken на свой токен.
-
-P.S. всё это будет работать только в корне сайта.
-
-
-Всё это работает на хостинге с PHP.
-
-Работающий пример: https://www.engineer-school.space/
-
+Данные для входа в админ-панель:
+Пользователь admin
+Пароль admin
+Поле входа рекомендую сменить пароль;)
