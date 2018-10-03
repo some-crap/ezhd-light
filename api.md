@@ -112,3 +112,30 @@ id - id задания в базе
 {"response" : 0 , "error" : "auth"}
 
 
+5)
+Редактирование ДЗ
+
+Для редактирования ДЗ необходимо послать GET запрос по адресу https://hwonline.ru/api/edit.php
+Для отправки запроса необходимо включить
+
+login - логин 
+
+password - пароль
+
+id - id задания в базе
+
+subject - предмет
+
+hometask - задание
+
+В случае успеха сервер вернёт:
+
+{"response" : 1 , "operation" : "edit"}
+
+В случае ошибок сервер вернёт одну из этих строк:
+
+{"response" : 0 , "error" : "nulldata"}
+
+{"response" : 0 , "error" : "permission"}
+
+{"response" : 0 , "error" : "auth"}
