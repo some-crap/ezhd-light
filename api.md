@@ -86,3 +86,29 @@ hometask - задание
 {"response" : 0 , "error" : "permission"}
 
 {"response" : 0 , "error" : "auth"}
+
+4)
+Удаление ДЗ
+
+Для удаления ДЗ необходимо послать GET запрос по адресу https://hwonline.ru/api/delete.php
+Для отправки запроса необходимо включить
+
+login - логин 
+
+password - пароль
+
+id - id задания в базе
+
+В случае успеха сервер вернёт:
+
+{"response" : 1 , "operation" : "delete"}
+
+В случае ошибок сервер вернёт одну из этих строк:
+
+{"response" : 0 , "error" : "nulldata"}
+
+{"response" : 0 , "error" : "permission"}
+
+{"response" : 0 , "error" : "auth"}
+
+
