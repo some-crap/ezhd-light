@@ -26,7 +26,7 @@ vk - id аккаунта в ВКонтакте
 
 При успешной авторизации сервер вернёт строку:
 
-{"response" : 1 , "usertype" : int}
+{"response" : "1" , "usertype" : "int"}
 
 , где int - целое число
 
@@ -36,7 +36,7 @@ vk - id аккаунта в ВКонтакте
 
 В случае ошибки авторизации сервер вернёт строку:
 
-{"response" : 0 , "error" : "auth"}
+{"response" : "0" , "error" : "auth"}
 
 
 
@@ -73,12 +73,12 @@ hometask - задание
 
 В случае, если заданий нет, сервер вернёт строку:
 
-{{"response" : 1 , "error" : "emptydb"}}
+{{"response" : "1" , "error" : "emptydb"}}
 
 
 В случае ошибки авторизации сервер вернёт строку:
 
-{"response" : 0 , "error" : "auth"}
+{"response" : "0" , "error" : "auth"}
 
 
 3)
@@ -109,15 +109,15 @@ hometask - задание
 
 В случае успеха сервер вернёт:
 
-{"response" : 1 , "operation" : "add"}
+{"response" : "1" , "operation" : "add"}
 
 В случае ошибок сервер вернёт одну из этих строк:
 
-{"response" : 0 , "error" : "nulldata"}
+{"response" : "0" , "error" : "nulldata"}
 
-{"response" : 0 , "error" : "permission"}
+{"response" : "0" , "error" : "permission"}
 
-{"response" : 0 , "error" : "auth"}
+{"response" : "0" , "error" : "auth"}
 
 4)
 Удаление ДЗ
@@ -143,15 +143,15 @@ id - id задания в базе
 
 В случае успеха сервер вернёт:
 
-{"response" : 1 , "operation" : "delete"}
+{"response" : "1" , "operation" : "delete"}
 
 В случае ошибок сервер вернёт одну из этих строк:
 
-{"response" : 0 , "error" : "nulldata"}
+{"response" : "0" , "error" : "nulldata"}
 
-{"response" : 0 , "error" : "permission"}
+{"response" : "0" , "error" : "permission"}
 
-{"response" : 0 , "error" : "auth"}
+{"response" : "0" , "error" : "auth"}
 
 
 5)
@@ -182,12 +182,12 @@ hometask - задание
 
 В случае успеха сервер вернёт:
 
-{"response" : 1 , "operation" : "edit"}
+{"response" : "1" , "operation" : "edit"}
 
 В случае ошибок сервер вернёт одну из этих строк:
 
-{"response" : 0 , "error" : "nulldata"}
+{"response" : "0" , "error" : "nulldata"}
 
-{"response" : 0 , "error" : "permission"}
+{"response" : "0" , "error" : "permission"}
 
-{"response" : 0 , "error" : "auth"}
+{"response" : "0" , "error" : "auth"}
